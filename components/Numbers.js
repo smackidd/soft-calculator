@@ -4,20 +4,11 @@ import { Neomorph } from 'react-native-neomorph-shadows';
 
 import theme from '../styles/theme.style';
 
-const Numbers = ({ value, setDisplay, display }) => {
-  const handlePress = () => {
-    if (display[0] === 0) {
-      setDisplay([])
-    }
-    setDisplay((prev) => {
-      let newDisplay = [...prev]
-      newDisplay.push(value);
-      return newDisplay
-    })
-  }
+const Numbers = ({ value, handleNumberPress }) => {
+
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => handlePress()}>
+    <TouchableOpacity style={styles.button} onPress={() => handleNumberPress(value)}>
       <Neomorph
         style={styles.buttonShadow}
       >

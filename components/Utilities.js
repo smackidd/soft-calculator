@@ -3,28 +3,11 @@ import React from 'react'
 import { Neomorph } from 'react-native-neomorph-shadows';
 import theme from "../styles/theme.style";
 
-const Utilities = ({ value, setDisplay, display, setRunningTotal }) => {
-  const convertDisplayToNumber = () => {
-    let placeholder = 1;
-    let total = 0;
-    for (let i = display.length; i > 0; i--) {
-      total = total + (parseInt(display[i - 1]) * placeholder);
-      placeholder = placeholder * 10;
-    }
-    console.log(total);
-    return total;
-  }
+const Utilities = ({ value, setDisplay, display, setRunningTotal, handleUtilPress }) => {
 
-  const handlePress = () => {
-    if (value === "C") {
-      setDisplay([0]);
-    } else if (value === "+") {
-      setRunningTotal(convertDisplayToNumber);
-    }
-  }
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => handlePress()}>
+    <TouchableOpacity style={styles.button} onPress={() => handleUtilPress(value)}>
       <Neomorph
         style={styles.buttonShadow}
       >

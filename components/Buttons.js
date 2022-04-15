@@ -7,38 +7,38 @@ import Numbers from './Numbers';
 import Utilities from './Utilities';
 import Equals from './Equals';
 
-const Buttons = ({ setDisplay, display, setRunningTotal }) => {
+const Buttons = ({ setDisplay, display, handleNumberPress, handleUtilPress }) => {
 
 
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Utilities value={"C"} setDisplay={setDisplay} display={display} />
-        <Utilities value={"+/-"} setDisplay={setDisplay} display={display} />
-        <Utilities value={"%"} setDisplay={setDisplay} display={display} />
-        <Utilities value={"/"} setDisplay={setDisplay} display={display} />
+        <Utilities value={"C"} handleUtilPress={handleUtilPress} />
+        <Utilities value={"+/-"} handleUtilPress={handleUtilPress} />
+        <Utilities value={"%"} handleUtilPress={handleUtilPress} />
+        <Utilities value={"/"} handleUtilPress={handleUtilPress} />
       </View>
       <View style={styles.row}>
-        <Numbers value={"1"} setDisplay={setDisplay} display={display} />
-        <Numbers value={"2"} setDisplay={setDisplay} display={display} />
-        <Numbers value={"3"} setDisplay={setDisplay} display={display} />
-        <Utilities value={"X"} setDisplay={setDisplay} display={display} />
+        <Numbers value={"1"} handleNumberPress={handleNumberPress} />
+        <Numbers value={"2"} handleNumberPress={handleNumberPress} />
+        <Numbers value={"3"} handleNumberPress={handleNumberPress} />
+        <Utilities value={"X"} handleUtilPress={handleUtilPress} />
       </View>
       <View style={styles.row}>
-        <Numbers value={"4"} setDisplay={setDisplay} display={display} />
-        <Numbers value={"5"} setDisplay={setDisplay} display={display} />
-        <Numbers value={"6"} setDisplay={setDisplay} display={display} />
-        <Utilities value={"-"} setDisplay={setDisplay} display={display} />
+        <Numbers value={"4"} handleNumberPress={handleNumberPress} />
+        <Numbers value={"5"} handleNumberPress={handleNumberPress} />
+        <Numbers value={"6"} handleNumberPress={handleNumberPress} />
+        <Utilities value={"-"} handleUtilPress={handleUtilPress} />
       </View>
       <View style={styles.row}>
-        <Numbers value={"7"} setDisplay={setDisplay} display={display} />
-        <Numbers value={"8"} setDisplay={setDisplay} display={display} />
-        <Numbers value={"9"} setDisplay={setDisplay} display={display} />
-        <Utilities value={"+"} setDisplay={setDisplay} display={display} setRunningTotal={setRunningTotal} />
+        <Numbers value={"7"} handleNumberPress={handleNumberPress} />
+        <Numbers value={"8"} handleNumberPress={handleNumberPress} />
+        <Numbers value={"9"} handleNumberPress={handleNumberPress} />
+        <Utilities value={"+"} handleUtilPress={handleUtilPress} />
       </View>
       <View style={styles.row}>
-        <Numbers value={"0"} setDisplay={setDisplay} display={display} />
-        <Numbers value={"."} setDisplay={setDisplay} display={display} />
+        <Numbers value={"0"} handleNumberPress={handleNumberPress} />
+        <Numbers value={"."} handleNumberPress={handleNumberPress} />
         <Equals value={"="} setDisplay={setDisplay} display={display} />
       </View>
     </View>
