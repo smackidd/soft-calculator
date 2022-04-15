@@ -1,0 +1,7 @@
+export default {
+  PRIMARY_BACKGROUND: "#1F1C24",
+  ACCENT_COLOR: "#00C2F8",
+  SECONDARY_COLOR: "#E69BDC",
+  BUTTON_SHADOW: "6px 6px 12px #17151b, -6px -6px 12px #27232d",
+  BUTTON_RADIUS: 15
+}
