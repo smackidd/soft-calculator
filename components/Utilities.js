@@ -1,24 +1,25 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 import { Neomorph } from 'react-native-neomorph-shadows';
+import theme from "../styles/theme.style";
 
-import theme from '../styles/theme.style';
-
-const Button = ({ value, setDisplay, display }) => {
-  const utilButton = value === "+" || value === "-" || value === "X" || value === "/" || value === "C" || value === "+/-" || value === "%"
+const Utilities = ({ value, setDisplay, display, setRunningTotal }) => {
+  const convertDisplayToNumber = () => {
+    let placeholder = 1;
+    let total = 0;
+    for (let i = display.length; i > 0; i--) {
+      total = total + (parseInt(display[i - 1]) * placeholder);
+      placeholder = placeholder * 10;
+    }
+    console.log(total);
+    return total;
+  }
 
   const handlePress = () => {
-    if (!utilButton) {
-      if (display[0] === 0) {
-        setDisplay([])
-      }
-      setDisplay((prev) => {
-        let newDisplay = [...prev]
-        newDisplay.push(value);
-        return newDisplay
-      })
-    } else if (value === "C") {
+    if (value === "C") {
       setDisplay([0]);
+    } else if (value === "+") {
+      setRunningTotal(convertDisplayToNumber);
     }
   }
 
@@ -27,19 +28,15 @@ const Button = ({ value, setDisplay, display }) => {
       <Neomorph
         style={styles.buttonShadow}
       >
-        {utilButton ? (
-          <View style={styles.utilButton}>
-            <Text style={styles.utilText}>{value}</Text>
-          </View>
-        ) : (
-          <Text style={styles.text}>{value}</Text>
-        )}
+        <View style={styles.utilButton}>
+          <Text style={styles.utilText}>{value}</Text>
+        </View>
       </Neomorph>
     </TouchableOpacity>
   )
 }
 
-export default Button;
+export default Utilities
 
 const styles = StyleSheet.create({
   text: {

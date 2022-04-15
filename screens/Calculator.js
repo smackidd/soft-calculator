@@ -5,11 +5,12 @@ import Buttons from '../components/Buttons';
 
 const Calculator = () => {
   const [display, setDisplay] = useState([0]);
+  const [runndingTotal, setRunningTotal] = useState(0);
 
   return (
     <SafeAreaView style={styles.container}>
       <Output display={display} />
-      <Buttons setDisplay={setDisplay} display={display} />
+      <Buttons setDisplay={setDisplay} display={display} setRunningTotal={setRunningTotal} />
     </SafeAreaView>
   )
 }
