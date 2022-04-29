@@ -3,9 +3,9 @@ import React from 'react'
 import { Neomorph } from 'react-native-neomorph-shadows';
 import theme from "../styles/theme.style";
 
-const Equals = ({ value, setDisplay }) => {
+const Equals = ({ value, handleUtilPress, ...props }) => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity {...props} style={styles.button} onPress={() => handleUtilPress(value)}>
       <Neomorph
         style={styles.buttonShadow}
       >

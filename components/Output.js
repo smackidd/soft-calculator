@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+import { floor } from "mathjs"
 import theme from "../styles/theme.style"
 
-const Output = ({ display }) => {
+const Output = ({ display, ...props }) => {
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{display}</Text>
+      <Text {...props} testID={"Output"} style={styles.text}>{display === "." ? "0" + display : floor(display, 10)}</Text>
     </View>
   )
 }

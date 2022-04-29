@@ -7,39 +7,39 @@ import Numbers from './Numbers';
 import Utilities from './Utilities';
 import Equals from './Equals';
 
-const Buttons = ({ setDisplay, display, handleNumberPress, handleUtilPress }) => {
+const Buttons = ({ handleNumberPress, handleUtilPress, ...props }) => {
 
 
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Utilities value={"C"} handleUtilPress={handleUtilPress} />
-        <Utilities value={"+/-"} handleUtilPress={handleUtilPress} />
-        <Utilities value={"%"} handleUtilPress={handleUtilPress} />
-        <Utilities value={"/"} handleUtilPress={handleUtilPress} />
+        <Utilities {...props} testID={"C.Button"} value={"C"} handleUtilPress={handleUtilPress} />
+        <Utilities {...props} testID={"+/-.Button"} value={"+/-"} handleUtilPress={handleUtilPress} />
+        <Utilities {...props} testID={"%.Button"} value={"%"} handleUtilPress={handleUtilPress} />
+        <Utilities {...props} testID={"/.Button"} value={"/"} handleUtilPress={handleUtilPress} />
       </View>
       <View style={styles.row}>
-        <Numbers value={"1"} handleNumberPress={handleNumberPress} />
-        <Numbers value={"2"} handleNumberPress={handleNumberPress} />
-        <Numbers value={"3"} handleNumberPress={handleNumberPress} />
-        <Utilities value={"X"} handleUtilPress={handleUtilPress} />
+        <Numbers {...props} testID={"7.Button"} value={"7"} handleNumberPress={handleNumberPress} />
+        <Numbers {...props} testID={"8.Button"} value={"8"} handleNumberPress={handleNumberPress} />
+        <Numbers {...props} testID={"9.Button"} value={"9"} handleNumberPress={handleNumberPress} />
+        <Utilities {...props} testID={"*.Button"} value={"*"} handleUtilPress={handleUtilPress} />
       </View>
       <View style={styles.row}>
-        <Numbers value={"4"} handleNumberPress={handleNumberPress} />
-        <Numbers value={"5"} handleNumberPress={handleNumberPress} />
-        <Numbers value={"6"} handleNumberPress={handleNumberPress} />
-        <Utilities value={"-"} handleUtilPress={handleUtilPress} />
+        <Numbers {...props} testID={"4.Button"} value={"4"} handleNumberPress={handleNumberPress} />
+        <Numbers {...props} testID={"5.Button"} value={"5"} handleNumberPress={handleNumberPress} />
+        <Numbers {...props} testID={"6.Button"} value={"6"} handleNumberPress={handleNumberPress} />
+        <Utilities {...props} testID={"-.Button"} value={"-"} handleUtilPress={handleUtilPress} />
       </View>
       <View style={styles.row}>
-        <Numbers value={"7"} handleNumberPress={handleNumberPress} />
-        <Numbers value={"8"} handleNumberPress={handleNumberPress} />
-        <Numbers value={"9"} handleNumberPress={handleNumberPress} />
-        <Utilities value={"+"} handleUtilPress={handleUtilPress} />
+        <Numbers {...props} testID={"1.Button"} value={"1"} handleNumberPress={handleNumberPress} />
+        <Numbers {...props} testID={"2.Button"} value={"2"} handleNumberPress={handleNumberPress} />
+        <Numbers {...props} testID={"3.Button"} value={"3"} handleNumberPress={handleNumberPress} />
+        <Utilities {...props} testID={"+.Button"} value={"+"} handleUtilPress={handleUtilPress} />
       </View>
       <View style={styles.row}>
-        <Numbers value={"0"} handleNumberPress={handleNumberPress} />
-        <Numbers value={"."} handleNumberPress={handleNumberPress} />
-        <Equals value={"="} setDisplay={setDisplay} display={display} />
+        <Numbers {...props} testID={"0.Button"} value={"0"} handleNumberPress={handleNumberPress} />
+        <Numbers {...props} testID={"..Button"} value={"."} handleNumberPress={handleNumberPress} />
+        <Equals {...props} testID={"=.Button"} value={"="} handleUtilPress={handleUtilPress} />
       </View>
     </View>
   )

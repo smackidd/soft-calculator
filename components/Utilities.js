@@ -3,16 +3,16 @@ import React from 'react'
 import { Neomorph } from 'react-native-neomorph-shadows';
 import theme from "../styles/theme.style";
 
-const Utilities = ({ value, setDisplay, display, setRunningTotal, handleUtilPress }) => {
+const Utilities = ({ value, handleUtilPress, ...props }) => {
 
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => handleUtilPress(value)}>
+    <TouchableOpacity {...props} style={styles.button} onPress={() => handleUtilPress(value)}>
       <Neomorph
         style={styles.buttonShadow}
       >
         <View style={styles.utilButton}>
-          <Text style={styles.utilText}>{value}</Text>
+          <Text style={styles.utilText}>{value === "*" ? "x" : value}</Text>
         </View>
       </Neomorph>
     </TouchableOpacity>

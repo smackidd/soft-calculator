@@ -4,11 +4,11 @@ import { Neomorph } from 'react-native-neomorph-shadows';
 
 import theme from '../styles/theme.style';
 
-const Numbers = ({ value, handleNumberPress }) => {
+const Numbers = ({ value, handleNumberPress, ...props }) => {
 
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => handleNumberPress(value)}>
+    <TouchableOpacity {...props} style={styles.button} onPress={() => handleNumberPress(value)}>
       <Neomorph
         style={styles.buttonShadow}
       >
