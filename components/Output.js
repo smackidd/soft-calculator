@@ -7,7 +7,7 @@ const Output = ({ display, ...props }) => {
 
   return (
     <View style={styles.container}>
-      <Text {...props} testID={"Output"} style={styles.text}>{display === "." ? "0" + display : floor(display, 10)}</Text>
+      <Text {...props} testID={"Output"} style={(display.length <= 10) ? styles.text : styles.textSmall}>{display === "." ? "0" + display : floor(display, 10)}</Text>
     </View>
   )
 }
@@ -26,5 +26,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 54,
     color: "#99AEBA"
-  }
+  },
+  textSmall: {
+    fontSize: 36,
+    color: "#99AEBA"
+  },
 })

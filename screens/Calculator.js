@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
-import { evaluate } from 'mathjs';
+import { evaluate, parse, compile } from 'mathjs';
 import Output from '../components/Output';
 import Buttons from '../components/Buttons';
 
@@ -15,8 +15,7 @@ const Calculator = () => {
 
   const updateDisplay = (newRunningTotal) => {
     setRunningTotal(newRunningTotal);
-    console.log("newRunningTotal", newRunningTotal, "prevNumber", prevNumber);
-    setDisplay(evaluate(newRunningTotal));
+    setDisplay(evaluate(newRunningTotal).toString());
     setNewNumber(true);
   }
 
@@ -27,7 +26,7 @@ const Calculator = () => {
       const index = string.lastIndexOf(operators[i]);
       if (index > highestIndex) highestIndex = index;
     }
-    return highestIndex;
+    return highestIndex + 1;
   }
 
   const firstUtilPress = (value) => {
@@ -50,28 +49,31 @@ const Calculator = () => {
       updateDisplay(newRunningTotal);
     } else {
       // for changing previous expression to new expression
-      const newRunningTotal = runningTotal.slice(0, runningTotal.length);
+      let newRunningTotal = runningTotal;
+      if (isNaN(parseInt(runningTotal[runningTotal.length - 1]))) { newRunningTotal = runningTotal.slice(0, runningTotal.length - 1) };
+      console.log("expression", expression, "newRunningTotal", newRunningTotal);
       updateDisplay(newRunningTotal);
       setRunningTotal(newRunningTotal + value);
+      if (value !== "=") setExpression(value);
     }
   }
 
   const handleNumberPress = (value) => {
     if (display === "0" || newNumber === true) {
+      if (!isNaN(parseInt(runningTotal[runningTotal.length - 1]))) {
+        setRunningTotal((prev) => {
+          const newRunningTotal = prev.slice(0, findPreviousOperatorIndex(prev));
+          return newRunningTotal;
+        })
+      }
       setDisplay("")
     }
-    if (runningTotal[runningTotal.length - 1] === "=") {
-      setRunningTotal((prev) => {
-        const spliceIndex = findPreviousOperatorIndex(prev);
-        console.log(prev.slice(spliceIndex, prev.length - spliceIndex, value))
-        return prev.slice(spliceIndex, prev.length - spliceIndex, value);
+    if (display.length <= 15) {
+      setDisplay((prev) => {
+        if (prev.includes(".") && value === ".") return prev
+        else return prev + value;
       })
     }
-
-    setDisplay((prev) => {
-      if (prev.includes(".") && value === ".") return prev
-      else return prev + value;
-    })
     setNewNumber(false);
   }
 
